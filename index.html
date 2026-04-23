@@ -189,4 +189,106 @@
             font-weight: 800; 
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin
+            margin-top: 30px; 
+            transition: all 0.3s; 
+            box-shadow: 0 10px 20px var(--primary-glow);
+        }
+        .btn-visit:hover { 
+            background: #ff2e43; 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 25px rgba(255, 71, 87, 0.6);
+        }
+
+        @media (max-width: 768px) { 
+            header h1 { font-size: 2.5rem; }
+            .m-left { border-radius: 30px 30px 0 0; padding: 30px; }
+            .m-right { padding: 30px; }
+            .spec-grid, .pc-grid { grid-template-columns: 1fr; } 
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <p>Premium 2026 Collection</p>
+    <h1>MotoShowcase India</h1>
+</header>
+
+<div class="container" id="bikeGrid"></div>
+
+<div id="bikeModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modalBody" style="display: flex; flex-wrap: wrap; width: 100%;"></div>
+    </div>
+</div>
+
+<script>
+const bikes = [
+    { name: "Triumph Speed 400", tag: "Roadster", price: "₹ 2.31", img: "speed400.jpg", engine: "398cc Liquid-cooled", power: "40 PS", torque: "37.5 Nm", weight: "179 kg", pros: ["Build Quality", "Mid-range punch"], cons: ["Compact size"], url: "https://www.triumphmotorcycles.in/" },
+    { name: "Honda CB350", tag: "Classic", price: "₹ 1.97", img: "cb350.jfif", engine: "348cc Air-cooled", power: "21 PS", torque: "29.4 Nm", weight: "187 kg", pros: ["Refinement", "Retro soul"], cons: ["Tall gearing"], url: "https://www.honda2wheelersindia.com/" },
+    { name: "RE Guerrilla 450", tag: "Modern Roadster", price: "₹ 2.49", img: "guerrilla 450.webp", engine: "452cc Liquid-cooled", power: "40 PS", torque: "40 Nm", weight: "185 kg", pros: ["Agility", "TFT with Navigation"], cons: ["11L Tank"], url: "https://www.royalenfield.com/" },
+    { name: "Harley-Davidson X440", tag: "Cruiser", price: "₹ 2.35", img: "X440.jpg", engine: "440cc Air-Oil Cooled", power: "27 bhp", torque: "38 Nm", weight: "190.5 kg", pros: ["Exhaust Note", "Torque"], cons: ["Boxy styling"], url: "https://www.harley-davidsonx440.com/" },
+    { name: "Scrambler 400 XC", tag: "Scrambler", price: "₹ 2.59", img: "Scrambler 400X.jfif", engine: "398cc Liquid-cooled", power: "40 PS", torque: "37.5 Nm", weight: "185 kg", pros: ["Dual Purpose", "Stance"], cons: ["Tall Seat"], url: "https://www.triumphmotorcycles.in/" },
+    { name: "Yamaha XSR155", tag: "Neo-Retro", price: "₹ 1.59", img: "xsr155.jpg", engine: "155cc VVA Engine", power: "19 PS", torque: "14.7 Nm", weight: "134 kg", pros: ["Efficiency", "Light weight"], cons: ["Low Top Speed"], url: "https://www.yamaha-motor-india.com/" },
+    { name: "Honda CB350RS", tag: "Scrambler-Roadster", price: "₹ 2.15", img: "cb350rs.jpg", engine: "348cc Air-cooled", power: "21 PS", torque: "30 Nm", weight: "179 kg", pros: ["Handling", "Aesthetics"], cons: ["Stiff Ride"], url: "https://www.honda2wheelersindia.com/" },
+    { name: "Triumph Tracker 400", tag: "Flat Tracker", price: "₹ 2.50", img: "tracker400.jpg", engine: "398cc Liquid-cooled", power: "40 PS", torque: "37.5 Nm", weight: "175 kg", pros: ["Agility", "Unique looks"], cons: ["Limited Pillion comfort"], url: "https://www.triumphmotorcycles.in/" }
+];
+
+const grid = document.getElementById('bikeGrid');
+const modal = document.getElementById('bikeModal');
+const modalBody = document.getElementById('modalBody');
+
+bikes.forEach(bike => {
+    const card = document.createElement('div');
+    card.className = 'bike-card';
+    card.innerHTML = `
+        <div class="card-img" style="background-image: url('${bike.img}')"></div>
+        <div class="card-content">
+            <span class="badge">${bike.tag}</span>
+            <h3>${bike.name}</h3>
+            <p class="card-price">${bike.price} <span>Lakh</span></p>
+        </div>
+    `;
+    card.onclick = () => {
+        modalBody.innerHTML = `
+            <div class="m-left"><img src="${bike.img}" style="width:100%; border-radius:15px; max-width:400px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));"></div>
+            <div class="m-right">
+                <span class="badge">${bike.tag}</span>
+                <h2 style="margin:10px 0 5px; font-size: 2.2rem;">${bike.name}</h2>
+                <h3 style="color:var(--primary); margin:0 0 20px; font-size: 1.5rem;">${bike.price} Lakh</h3>
+                
+                <div class="spec-grid">
+                    <div class="spec-pill"><label>Engine</label><span>${bike.engine}</span></div>
+                    <div class="spec-pill"><label>Power</label><span>${bike.power}</span></div>
+                    <div class="spec-pill"><label>Torque</label><span>${bike.torque}</span></div>
+                    <div class="spec-pill"><label>Weight</label><span>${bike.weight}</span></div>
+                </div>
+
+                <div class="pc-grid">
+                    <div class="pc-box pros"><strong>⊕ Pros</strong> ${bike.pros.join(' &bull; ')}</div>
+                    <div class="pc-box cons"><strong>⊖ Cons</strong> ${bike.cons.join(' &bull; ')}</div>
+                </div>
+                
+                <a href="${bike.url}" target="_blank" class="btn-visit">Explore Official Site</a>
+            </div>
+        `;
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+    };
+    grid.appendChild(card);
+});
+
+document.querySelector('.close-modal').onclick = () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+};
+window.onclick = (e) => { 
+    if(e.target == modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+};
+</script>
+</body>
+</html>
