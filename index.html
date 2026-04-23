@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MotoShowcase India | Ultra Premium</title>
+    <title>MotoShowcase India | Custom Palette Edition</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ff4757;
-            --primary-glow: rgba(255, 71, 87, 0.4);
-            --bg: #0b0c10;
-            --surface: #1f2833;
-            --surface-light: #2a3644;
+            /* Applied New Color Palette */
+            --primary: #F58F7C;
+            --primary-glow: rgba(245, 143, 124, 0.4);
+            --accent: #F2C4CE;
+            --bg: #2C2B30;
+            --surface: #4F4F51;
+            --surface-light: #D6D6D6;
             --text: #ffffff;
-            --muted: #8a9bb2;
+            --muted: #D6D6D6;
         }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--surface-light); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
         body { 
             font-family: 'Poppins', sans-serif; 
             margin: 0; 
-            background: radial-gradient(circle at top, #1a1f2e 0%, var(--bg) 100%); 
+            background: radial-gradient(circle at top, #4F4F51 0%, var(--bg) 100%); 
             color: var(--text); 
             min-height: 100vh;
         }
@@ -33,13 +35,13 @@
         header { 
             padding: 80px 20px 60px; 
             text-align: center; 
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            border-bottom: 1px solid rgba(214, 214, 214, 0.1); 
         }
         header h1 { 
             font-size: 3.5rem; 
             margin: 0; 
             font-weight: 800;
-            background: linear-gradient(45deg, #fff, #8a9bb2);
+            background: linear-gradient(45deg, #fff, var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -1px;
@@ -64,11 +66,11 @@
 
         /* Upgraded Card Styling */
         .bike-card { 
-            background: rgba(31, 40, 51, 0.6); 
+            background: rgba(79, 79, 81, 0.6); 
             backdrop-filter: blur(10px);
             border-radius: 24px; 
             overflow: hidden; 
-            border: 1px solid rgba(255,255,255,0.05); 
+            border: 1px solid rgba(214, 214, 214, 0.1); 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             cursor: pointer; 
             position: relative;
@@ -84,7 +86,7 @@
             background-size: contain; 
             background-repeat: no-repeat; 
             background-position: center; 
-            background-color: rgba(0,0,0,0.2); 
+            background-color: rgba(44, 43, 48, 0.4); 
             margin: 15px; 
             border-radius: 18px; 
             transition: transform 0.5s ease;
@@ -95,15 +97,15 @@
 
         .card-content { padding: 0 25px 25px; }
         .badge { 
-            background: rgba(255, 71, 87, 0.1); 
+            background: rgba(242, 196, 206, 0.1); 
             padding: 6px 14px; 
             border-radius: 50px; 
             font-size: 0.75rem; 
             font-weight: 700;
-            color: var(--primary); 
+            color: var(--accent); 
             margin-bottom: 12px; 
             display: inline-block; 
-            border: 1px solid rgba(255, 71, 87, 0.3);
+            border: 1px solid rgba(242, 196, 206, 0.3);
         }
         .card-content h3 { margin: 5px 0 10px; font-size: 1.5rem; font-weight: 700; }
         .card-price { color: var(--text); font-size: 1.2rem; font-weight: 800; }
@@ -116,7 +118,7 @@
             z-index: 1000; 
             left: 0; top: 0; 
             width: 100%; height: 100%; 
-            background: rgba(11, 12, 16, 0.85); 
+            background: rgba(44, 43, 48, 0.85); 
             backdrop-filter: blur(15px); 
             overflow-y: auto; 
         }
@@ -126,7 +128,7 @@
             width: 90%; 
             max-width: 1000px; 
             border-radius: 30px; 
-            border: 1px solid rgba(255,255,255,0.1); 
+            border: 1px solid rgba(214, 214, 214, 0.15); 
             box-shadow: 0 30px 60px rgba(0,0,0,0.6);
             position: relative; 
             display: flex; 
@@ -153,7 +155,7 @@
             flex: 1.2; 
             min-width: 320px; 
             padding: 40px; 
-            background: rgba(0,0,0,0.2); 
+            background: rgba(44, 43, 48, 0.4); 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -164,10 +166,10 @@
         /* Dashboard-style Specs */
         .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; }
         .spec-pill { 
-            background: rgba(0,0,0,0.3); 
+            background: rgba(44, 43, 48, 0.5); 
             padding: 15px; 
             border-radius: 16px; 
-            border: 1px solid rgba(255,255,255,0.05); 
+            border: 1px solid rgba(214, 214, 214, 0.1); 
         }
         .spec-pill label { display: block; color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
         .spec-pill span { font-weight: 700; font-size: 1rem; color: #fff; }
@@ -176,13 +178,13 @@
         .pc-box { padding: 18px; border-radius: 16px; font-size: 0.85rem; line-height: 1.5; }
         .pc-box strong { display: block; margin-bottom: 5px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
         .pros { background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.3); color: #2ecc71; }
-        .cons { background: rgba(255, 71, 87, 0.1); border: 1px solid rgba(255, 71, 87, 0.3); color: #ff4757; }
+        .cons { background: rgba(245, 143, 124, 0.1); border: 1px solid rgba(245, 143, 124, 0.3); color: var(--primary); }
         
         .btn-visit { 
             display: block; 
             text-align: center; 
             background: var(--primary); 
-            color: white; 
+            color: #1a1a1a; 
             text-decoration: none; 
             padding: 18px; 
             border-radius: 16px; 
@@ -194,9 +196,9 @@
             box-shadow: 0 10px 20px var(--primary-glow);
         }
         .btn-visit:hover { 
-            background: #ff2e43; 
+            background: var(--accent); 
             transform: translateY(-3px); 
-            box-shadow: 0 15px 25px rgba(255, 71, 87, 0.6);
+            box-shadow: 0 15px 25px rgba(242, 196, 206, 0.4);
         }
 
         @media (max-width: 768px) { 
@@ -230,7 +232,7 @@ const bikes = [
     { name: "RE Guerrilla 450", tag: "Modern Roadster", price: "₹ 2.49", img: "guerrilla 450.webp", engine: "452cc Liquid-cooled", power: "40 PS", torque: "40 Nm", weight: "185 kg", pros: ["Agility", "TFT with Navigation"], cons: ["11L Tank"], url: "https://www.royalenfield.com/" },
     { name: "Harley-Davidson X440", tag: "Cruiser", price: "₹ 2.35", img: "X440.jpg", engine: "440cc Air-Oil Cooled", power: "27 bhp", torque: "38 Nm", weight: "190.5 kg", pros: ["Exhaust Note", "Torque"], cons: ["Boxy styling"], url: "https://www.harley-davidsonx440.com/" },
     { name: "Scrambler 400 XC", tag: "Scrambler", price: "₹ 2.59", img: "Scrambler 400X.jfif", engine: "398cc Liquid-cooled", power: "40 PS", torque: "37.5 Nm", weight: "185 kg", pros: ["Dual Purpose", "Stance"], cons: ["Tall Seat"], url: "https://www.triumphmotorcycles.in/" },
-    { name: "Yamaha XSR155", tag: "Neo-Retro", price: "₹ 1.59", img: "XSR155.jpg", engine: "155cc VVA Engine", power: "19 PS", torque: "14.7 Nm", weight: "134 kg", pros: ["Efficiency", "Light weight"], cons: ["Low Top Speed"], url: "https://www.yamaha-motor-india.com/" },
+    { name: "Yamaha XSR155", tag: "Neo-Retro", price: "₹ 1.59", img: "XRS155.jpg", engine: "155cc VVA Engine", power: "19 PS", torque: "14.7 Nm", weight: "134 kg", pros: ["Efficiency", "Light weight"], cons: ["Low Top Speed"], url: "https://www.yamaha-motor-india.com/" },
     { name: "Honda CB350RS", tag: "Scrambler-Roadster", price: "₹ 2.15", img: "CB350RS.webp", engine: "348cc Air-cooled", power: "21 PS", torque: "30 Nm", weight: "179 kg", pros: ["Handling", "Aesthetics"], cons: ["Stiff Ride"], url: "https://www.honda2wheelersindia.com/" },
     { name: "Triumph Tracker 400", tag: "Flat Tracker", price: "₹ 2.50", img: "Tracker400.jpg", engine: "398cc Liquid-cooled", power: "40 PS", torque: "37.5 Nm", weight: "175 kg", pros: ["Agility", "Unique looks"], cons: ["Limited Pillion comfort"], url: "https://www.triumphmotorcycles.in/" }
 ];
