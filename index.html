@@ -3,30 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MotoShowcase India 2026</title>
+    <title>MotoShowcase Premium | 2026</title>
     <style>
-        :root { --primary: #d32f2f; --secondary: #1a1a1a; --bg-color: #f4f4f9; --card-bg: #ffffff; }
-        body { font-family: sans-serif; margin: 0; background-color: var(--bg-color); }
-        header { background: #1a1a1a; color: white; padding: 60px 20px; text-align: center; }
-        .container { max-width: 1200px; margin: -30px auto 50px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-        .bike-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; }
-        .bike-card:hover { transform: translateY(-5px); }
-        .card-img { height: 200px; background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #f9f9f9; }
+        :root {
+            --primary: #ff3e3e;
+            --bg: #0f1012;
+            --card: #1e2024;
+            --text: #ffffff;
+            --muted: #a0a0a0;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        
+        header { padding: 80px 20px; text-align: center; background: linear-gradient(to bottom, #1a1a1a, var(--bg)); }
+        header h1 { font-size: 3rem; margin: 0; letter-spacing: -1px; }
+        header p { color: var(--primary); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+
+        .container { max-width: 1300px; margin: 0 auto 50px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+
+        /* Card Styling */
+        .bike-card { background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid #333; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; position: relative; }
+        .bike-card:hover { transform: scale(1.03); border-color: var(--primary); box-shadow: 0 10px 30px rgba(255, 62, 62, 0.2); }
+        
+        .card-img { height: 220px; background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #161719; margin: 10px; border-radius: 15px; }
+        
         .card-content { padding: 20px; }
-        .card-price { color: var(--primary); font-weight: bold; }
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto; }
-        .modal-content { background: white; margin: 5% auto; width: 90%; max-width: 800px; border-radius: 20px; padding: 30px; position: relative; display: flex; flex-wrap: wrap; }
-        .close-modal { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
-        .modal-left { flex: 1; min-width: 300px; padding: 20px; }
-        .modal-right { flex: 1; min-width: 300px; padding: 20px; }
-        .spec-item { background: #f0f0f0; padding: 10px; margin: 5px 0; border-radius: 5px; font-size: 0.9rem; }
+        .badge { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 50px; font-size: 0.7rem; color: var(--muted); margin-bottom: 10px; display: inline-block; }
+        .card-content h3 { margin: 5px 0; font-size: 1.4rem; }
+        .card-price { color: var(--primary); font-size: 1.2rem; font-weight: 800; margin-bottom: 15px; }
+
+        /* Modal styling */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); overflow-y: auto; }
+        .modal-content { background: #1a1a1a; margin: 5% auto; width: 90%; max-width: 1000px; border-radius: 30px; border: 1px solid #333; position: relative; overflow: hidden; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .close-modal { position: absolute; right: 25px; top: 20px; font-size: 35px; color: white; cursor: pointer; z-index: 10; }
+        .modal-body { display: flex; flex-wrap: wrap; }
+        .m-left { flex: 1.2; min-width: 350px; padding: 40px; background: #151515; display: flex; align-items: center; justify-content: center; }
+        .m-right { flex: 1; min-width: 350px; padding: 40px; }
+
+        .spec-pill { background: #252525; padding: 12px; margin: 8px 0; border-radius: 12px; display: flex; justify-content: space-between; border: 1px solid #333; }
+        .spec-pill label { color: var(--muted); font-size: 0.8rem; }
+        
+        .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .pc-box { padding: 15px; border-radius: 15px; font-size: 0.85rem; }
+        .pros { background: rgba(76, 175, 80, 0.1); border: 1px solid #4caf50; color: #81c784; }
+        .cons { background: rgba(244, 67, 54, 0.1); border: 1px solid #f44336; color: #e57373; }
+
+        .btn-visit { display: block; text-align: center; background: var(--primary); color: white; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: bold; margin-top: 25px; transition: 0.3s; }
+        .btn-visit:hover { background: #ff1a1a; transform: translateY(-3px); }
+
+        @media (max-width: 768px) { .m-left, .m-right { flex: 100%; } .pros-cons { grid-template-columns: 1fr; } .m-left { padding: 20px; } }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>MotoShowcase India 2026</h1>
-    <p>Live from Amravati - Interactive Bike Guide</p>
+    <p>Live from Amravati</p>
+    <h1>MotoShowcase India</h1>
 </header>
 
 <div class="container" id="bikeGrid"></div>
@@ -34,7 +67,7 @@
 <div id="bikeModal" class="modal">
     <div class="modal-content">
         <span class="close-modal">&times;</span>
-        <div id="modalBody" style="display: flex; flex-wrap: wrap; width: 100%;"></div>
+        <div id="modalBody" class="modal-body"></div>
     </div>
 </div>
 
@@ -42,37 +75,67 @@
 const bikes = [
     {
         name: "Triumph Speed 400",
+        tag: "Roadster",
         price: "₹ 2.32 Lakh",
         img: "speed400.jpg",
-        specs: ["398cc Liquid-cooled", "40 PS Power", "179 kg Weight", "803mm Seat"],
+        engine: "398.15 cc Liquid-cooled",
+        power: "40 PS @ 8,000 rpm",
+        torque: "37.5 Nm @ 6,500 rpm",
+        weight: "179 kg",
+        pros: ["Premium Build", "Punchy Engine", "Value"],
+        cons: ["Compact Size", "High-end Vibes"],
         url: "https://www.triumphmotorcycles.in/motorcycles/classic/speed-400"
     },
     {
         name: "Honda CB350",
+        tag: "Classic Cruiser",
         price: "₹ 1.97 Lakh",
         img: "cb350.jfif",
-        specs: ["348cc Air-cooled", "21 PS Power", "187 kg Weight", "800mm Seat"],
+        engine: "348.36 cc Air-cooled",
+        power: "21 PS @ 5,500 rpm",
+        torque: "29.4 Nm @ 3,000 rpm",
+        weight: "187 kg",
+        pros: ["Butter Smooth", "Retro Charm", "Comfort"],
+        cons: ["Gearing", "Top Speed"],
         url: "https://www.honda2wheelersindia.com/motorcycle/CB350"
     },
     {
-        name: "Royal Enfield Guerrilla 450",
+        name: "RE Guerrilla 450",
+        tag: "Modern Roadster",
         price: "₹ 2.39 Lakh",
         img: "guerrilla 450.webp",
-        specs: ["452cc Liquid-cooled", "40 PS Power", "185 kg Weight", "780mm Seat"],
+        engine: "452cc Liquid-cooled Sherpa",
+        power: "40 PS @ 8,000 rpm",
+        torque: "40 Nm @ 5,500 rpm",
+        weight: "185 kg",
+        pros: ["Fastest RE", "Modern TFT", "Agile"],
+        cons: ["Small 11L Tank", "Stiff Seat"],
         url: "https://www.royalenfield.com/in/en/motorcycles/guerrilla-450/"
     },
     {
         name: "Harley-Davidson X440",
+        tag: "Cruiser-Roadster",
         price: "₹ 2.39 Lakh",
         img: "X440.jpg",
-        specs: ["440cc Air-Oil Cooled", "27 bhp Power", "190kg Weight", "805mm Seat"],
+        engine: "440 cc Air-Oil Cooled",
+        power: "27 bhp @ 6,000 rpm",
+        torque: "38 Nm @ 4,000 rpm",
+        weight: "190.5 kg",
+        pros: ["Torque King", "H-D Badge", "Stance"],
+        cons: ["Design Polish", "Heavy Clutch"],
         url: "https://www.harley-davidsonx440.com/"
     },
     {
         name: "Scrambler 400 XC",
+        tag: "True Scrambler",
         price: "₹ 2.89 Lakh",
         img: "Scrambler 400X.jfif",
-        specs: ["398cc Scrambler Tune", "40 PS Power", "185 kg Weight", "835mm Seat"],
+        engine: "398.15 cc Liquid-cooled",
+        power: "40 PS @ 8,000 rpm",
+        torque: "37.5 Nm @ 6,500 rpm",
+        weight: "185 kg",
+        pros: ["Go Anywhere", "Off-road Ergos", "Tech"],
+        cons: ["Tall 835mm Seat", "Pricey"],
         url: "https://www.triumphmotorcycles.in/motorcycles/classic/scrambler/scrambler-400-xc"
     }
 ];
@@ -87,26 +150,51 @@ bikes.forEach(bike => {
     card.innerHTML = `
         <div class="card-img" style="background-image: url('${bike.img}')"></div>
         <div class="card-content">
+            <span class="badge">${bike.tag}</span>
             <h3>${bike.name}</h3>
             <p class="card-price">${bike.price}</p>
+            <p style="color:var(--muted); font-size:0.8rem;">${bike.engine} • ${bike.weight}</p>
         </div>
     `;
     card.onclick = () => {
         modalBody.innerHTML = `
-            <div class="modal-left"><img src="${bike.img}" style="width:100%"></div>
-            <div class="modal-right">
-                <h2>${bike.name}</h2>
-                ${bike.specs.map(s => `<div class="spec-item">${s}</div>`).join('')}
-                <br><a href="${bike.url}" target="_blank" style="color:red; font-weight:bold;">Official Website →</a>
+            <div class="m-left">
+                <img src="${bike.img}" style="width:100%; max-width:500px; border-radius:20px;">
+            </div>
+            <div class="m-right">
+                <span class="badge" style="background:var(--primary); color:white;">${bike.tag}</span>
+                <h2 style="margin:10px 0;">${bike.name}</h2>
+                <h3 style="color:var(--primary); margin-bottom:20px;">${bike.price}</h3>
+                
+                <div class="spec-pill"><label>Engine</label><span>${bike.engine}</span></div>
+                <div class="spec-pill"><label>Power</label><span>${bike.power}</span></div>
+                <div class="spec-pill"><label>Torque</label><span>${bike.torque}</span></div>
+                <div class="spec-pill"><label>Weight</label><span>${bike.weight}</span></div>
+
+                <div class="pros-cons">
+                    <div class="pc-box pros"><strong>Pros:</strong><br>${bike.pros.join(', ')}</div>
+                    <div class="pc-box cons"><strong>Cons:</strong><br>${bike.cons.join(', ')}</div>
+                </div>
+
+                <a href="${bike.url}" target="_blank" class="btn-visit">Official Website →</a>
             </div>
         `;
         modal.style.display = "block";
+        document.body.style.overflow = "hidden";
     };
     grid.appendChild(card);
 });
 
-document.querySelector('.close-modal').onclick = () => modal.style.display = "none";
-window.onclick = (e) => { if(e.target == modal) modal.style.display = "none"; };
+document.querySelector('.close-modal').onclick = () => {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+};
+window.onclick = (e) => { 
+    if(e.target == modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+};
 </script>
 </body>
 </html>
